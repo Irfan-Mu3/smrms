@@ -100,7 +100,7 @@ if __name__ == "__main__":
     A_matrix = np.asarray([[0, 1],
                            [0.95, 0]])
     b_vector = np.asarray([0, 0.05])
-    sampling_P_matrix = np.hstack((A_matrix, b_vector.reshape(-1, 1)))
+#     sampling_P_matrix = np.hstack((A_matrix, b_vector.reshape(-1, 1)))
 
     pmf_matrix = np.zeros((num_states, num_states, N), )
     pmf_vector = np.zeros((num_states, N), )
