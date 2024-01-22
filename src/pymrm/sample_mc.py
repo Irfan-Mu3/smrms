@@ -143,24 +143,24 @@ def generate_random_mc_sparse(num_states, density=0.1):
 
     return A_matrix, b_vector, P_matrix
 
-# if __name__ == "__main__":
-#     num_states = 30
-#     res = generate_random_MC_npassrand(num_states)
-#     res4 = generate_random_MC_block(num_states)
-#     res3 = generate_random_MC(num_states)
-#     res2 = generate_random_MC_sparse(num_states)
-#
-#     fig, axs = plt.subplots(nrows=2, ncols=2, )
-#
-#     # rasterization is needed to remove lines from pdfs
-#     sns.heatmap(res[2], ax=axs[0, 0], rasterized=True)
-#     sns.heatmap(res4[2], ax=axs[0, 1], rasterized=True)
-#     sns.heatmap(res3[2], ax=axs[1, 0], rasterized=True)
-#     sns.heatmap(res2[2], ax=axs[1, 1], rasterized=True)
-#
-#     axs[0, 0].set_title('N-pass MC')
-#     axs[0, 1].set_title('Block MC')
-#     axs[1, 0].set_title('Uniform MC')
-#     axs[1, 1].set_title('Sparse MC')
-#
-#     plt.show()
+if __name__ == "__main__":
+    num_states = 30
+    res = generate_random_mc_npassrand(num_states)
+    res4 = generate_random_mc_block(num_states)
+    res3 = generate_random_mc(num_states)
+    res2 = generate_random_mc_sparse(num_states)
+
+    fig, axs = plt.subplots(nrows=2, ncols=2, )
+
+    # rasterization is needed to remove lines from pdfs
+    sns.heatmap(res[2], ax=axs[0, 0], rasterized=True)
+    sns.heatmap(res4[2], ax=axs[0, 1], rasterized=True)
+    sns.heatmap(res3[2], ax=axs[1, 0], rasterized=True)
+    sns.heatmap(res2[2], ax=axs[1, 1], rasterized=True)
+
+    axs[0, 0].set_title('N-pass MC')
+    axs[0, 1].set_title('Block MC')
+    axs[1, 0].set_title('Uniform MC')
+    axs[1, 1].set_title('Sparse MC')
+
+    plt.show()
