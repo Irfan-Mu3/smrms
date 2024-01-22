@@ -12,7 +12,7 @@ pfftw = fftw.interfaces.numpy_fft.fft
 ipfftw = fftw.interfaces.numpy_fft.ifft
 
 """
-Solves smrm reachability problems: The probability of reaching a set of states B, with reward cumulated r= 0,1,...,N-1,
+Solves DISCRETE smrm reachability problems: The probability of reaching a set of states B, with reward cumulated r= 0,1,...,N-1,
 is derived. Available solvers are: GE, power method, Jacobi, and Gauss-Siedel. We recommend using the power method.
 Two approximate algorithms are available: approximate power, and approximate GE (which uses LU decomp. via np.solve).
 
@@ -269,11 +269,13 @@ def create_combined_mat_for_gs(I_AoG, h_v):
 ########################################################################################################################
 # Solvers
 
+# helper
 def mydeconv(f, g, N):
     extra_zeros = np.zeros(N - 1)
     return np.polydiv(np.append(f, extra_zeros), g)[0][:N]
 
 
+# helper
 def myconv(f, g, N):
     extra_zeros = np.zeros(N - 1)
     F = pfftw(np.append(f, extra_zeros))
@@ -397,6 +399,7 @@ def solve_power(AoC, d_vector, N, max_iter=10000, x=None, force_full_iter=False,
     return np.real(pmfx), count
 
 
+# helper
 @jit
 def myconvolve_direct(f, g, N):
     sol = np.zeros(N)
@@ -408,6 +411,7 @@ def myconvolve_direct(f, g, N):
     return sol
 
 
+# helper
 def convolve_matrix_op(AoG, pmf_vecs, h_vecs):
     # warn: need to experiment with AoG as sparse
     N = len(h_vecs[:, 0, 0])
